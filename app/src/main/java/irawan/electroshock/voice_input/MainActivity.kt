@@ -11,7 +11,7 @@ class MainActivity : Activity() {
 
     private lateinit var binding: ActivityMainBinding
     private val SPEECH_REQUEST_CODE = 0
-    private val data :Unit? = null
+    private var dataVoice :String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class MainActivity : Activity() {
         if (requestCode == SPEECH_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             val spokenText: String? =
                 data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { results ->
-                    val data = results?.get(0) ?: "Null"
+                    dataVoice = results?.get(0) ?: "Null"
                     // Do something with spokenText.
                 }.toString()
 
